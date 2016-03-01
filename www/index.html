@@ -70,12 +70,29 @@
                     </div>
                 </div>
             </div>
-            <div class="SPage" id="galleriesPage">
+            <div class="SPage" id="guidePage">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <ul id="galleriesList" class="list-group">
+                    <div class="mapContainer col-xs-12">
+                        <div class="intrinsic-container intrinsic-container-4x3">
+                            <iframe src="img/SharifMap-1.jpg" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="SPage" id="depGuidePage">
+                <div class="row">
+                    <div class="mapContainer col-xs-12">
+                        <div class="btn-group btn-group-justified" id="groundSelect">
+                            <a href="#" class="tab btn btn-default groundSelect" data-f="img/F0.jpg">همکف</a>
+                            <a href="#" class="tab btn btn-default groundSelect" data-f="img/F1.jpg">اول</a>
+                            <a href="#" class="tab btn btn-default groundSelect" data-f="img/F2.jpg">دوم</a>
+                            <a href="#" class="tab btn btn-default groundSelect" data-f="img/F3.jpg">سوم</a>
+                        </div>
+                        <div class="intrinsic-container intrinsic-container-16x9">
+                            <iframe src="img/F0.jpg"  id="groundFrame" allowfullscreen></iframe>
 
-                        </ul>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,8 +102,8 @@
                         <ul id="firstPageMenu" class="list-group">
                             <a id="aboutBtn" class="list-group-item">درباره&zwnj;ی رویداد<span class="fa fa-info-circle"></span></a>
                             <a id="calBtn" class="list-group-item">برنامه&zwnj;ی مقالات<span class="fa fa-calendar"></span></a>
-                            <a class="list-group-item">نقشه و راهنمای دانشگاه<span class="fa fa-map-signs"></span></a>
-                            <a class="list-group-item">کمک به رویداد<span class="fa fa-credit-card"></span></a>
+                            <a id="guideBtn" class="list-group-item">نقشه و راهنمای دانشگاه<span class="fa fa-map-signs"></span></a>
+                            <a href="http://payment.sharif.ir/research/form.aspx?gid=402" class="list-group-item">کمک به رویداد<span class="fa fa-credit-card"></span></a>
                         </ul>
                     </div>
                 </div>
@@ -431,6 +448,10 @@
             <div class="tabBrowser btn-group btn-group-justified fullHeight" id="aboutFooter">
                 <a href="#" class="tab btn btn-default footerTabBtn" id="execCommitteeBtn">کمیته اجرایی</a>
                 <a href="#" class="tab btn btn-default footerTabBtn" id="sciCommitteeBtn">کمیته علمی</a>
+            </div>
+            <div class="tabBrowser btn-group btn-group-justified fullHeight" id="guideFooter">
+                <a href="#" class="tab btn btn-default footerTabBtn" id="universityMapBtn">دانشگاه</a>
+                <a href="#" class="tab btn btn-default footerTabBtn" id="departmentMapBtn">دانشکده</a>
             </div>
         </div>
     </div>

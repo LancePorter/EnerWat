@@ -75,7 +75,7 @@ ViewAssembler.prototype.assembleView = function(viewId, options){
 
     if ((this.populatedViews[viewId] == undefined) || this.populatedViews[viewId].isNew(options)){
         switch (viewId){
-            case '#galleriesPage':
+            case '#guidePage':
                 this.populateGalleriesPage(options);
                 break;
             case '#calendarPage':
@@ -102,7 +102,7 @@ ViewAssembler.prototype.assembleView = function(viewId, options){
 
 ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
     switch (viewId){
-        case '#galleriesPage':
+        case '#guidePage':
         case '#calendarPage':
         case '#firstPage':
         case '#aboutPage':
@@ -119,15 +119,44 @@ ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
             $('#backButton').hide().off('click');
     }
     switch (viewId){
-        case '#galleriesPage':
-            $('.mainHeader > h2').text('Galleries').fadeIn();
+        case '#guidePage':
+            $('.mainHeader > h2').text($('#toPersian #EN_mapAndGuideToUniversity').text()).fadeIn();
+            var changePageDelegate = this.changePageDelegate;
+            $('#backButton').fadeIn().click(function(){
+                changePageDelegate.changePage('#firstPage',{});
+            });
+            $('#guideFooter').fadeIn(300);
+            $('#universityMapBtn').off('click').click(function(){
+                changePageDelegate.changePage('#guidePage',{});
+            });
+            $('#departmentMapBtn').off('click').click(function(){
+                changePageDelegate.changePage('#depGuidePage',{});
+            });
+            break;
+        case '#depGuidePage':
+            $('.mainHeader > h2').text($('#toPersian #EN_mapAndGuideToUniversity').text()).fadeIn();
+            var changePageDelegate = this.changePageDelegate;
+            $('#backButton').fadeIn().click(function(){
+                changePageDelegate.changePage('#firstPage',{});
+            });
+            $('#guideFooter').fadeIn(300);
+            $('#universityMapBtn').off('click').click(function(){
+                changePageDelegate.changePage('#guidePage',{});
+            });
+            $('#departmentMapBtn').off('click').click(function(){
+                changePageDelegate.changePage('#depGuidePage',{});
+            });
+            $('.groundSelect').off('click').click(function(){
+                document.getElementById('groundFrame').src = $(this).data('f');
+            });
             break;
         case '#calendarPage':
             $('.mainHeader > h2').text($('#toPersian #EN_articlesSchedule').text()).fadeIn();
             var changePageDelegate = this.changePageDelegate;
             $('#backButton').fadeIn().click(function(){
                 changePageDelegate.changePage('#firstPage',{});
-            });            break;
+            });
+            break;
         case '#firstPage':
             $('.mainHeader > h2').text($('#toPersian #EN_welcome').text()).fadeIn();
             break;
@@ -145,10 +174,10 @@ ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
                 changePageDelegate.changePage('#firstPage',{});
             });
             $('#aboutFooter').fadeIn(300);
-            $('#sciCommitteeBtn').click(function(){
+            $('#sciCommitteeBtn').off('click').click(function(){
                 changePageDelegate.changePage('#sciCommitteePage',{});
             });
-            $('#execCommitteeBtn').click(function(){
+            $('#execCommitteeBtn').off('click').click(function(){
                 changePageDelegate.changePage('#execCommitteePage',{});
             });
             break;
@@ -156,7 +185,7 @@ ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
             $('.mainHeader > h2').text('Gallery Info').fadeIn();
             var changePageDelegate = this.changePageDelegate;
             $('#backButton').fadeIn().click(function(){
-                changePageDelegate.changePage('#galleriesPage',{});
+                changePageDelegate.changePage('#guidePage',{});
             });
     }
     return;
@@ -186,7 +215,7 @@ ViewAssembler.prototype.populateCalendarPage = function(options){
             height:'auto',
             eventLimit: false, // allow "more" link when too many events
             events: this.events,
-            defaultView: 'timelineDay',
+            defaultView: 'agendaWeek',
             resources: this.resources,
             resourceLabelText: $('#EN_place').text(),
             header: {
@@ -203,23 +232,8 @@ ViewAssembler.prototype.populateCalendarPage = function(options){
 };
 
 ViewAssembler.prototype.populateGalleriesPage = function(options){
-    if ((this.populatedViews['#galleriesPage'] == undefined) || this.modelController.galleriesListChanged){
-        var gals = this.modelController.getGalleriesList();
-        var changePageDelegate = this.changePageDelegate;
-        $('#galleriesList').empty();
-        var i;
-        for(i = 0; i < gals.length; i++){
-            $('#galleriesList').append($('<a class="list-group-item" data-gallery-id="' + gals[i].id + '">' +
-                    '<img class="galleriesListIcon" src="' + gals[i].icon.url + '" width="' + gals[i].icon.size + '"/>' +
-                    gals[i].title +
-                    '</a>').click(function(evt) {
-                    var options = {galleryId: $(this).data('gallery-id')};
-                    changePageDelegate.changePage('#galleryInfoPage', options);
-                })
-            );
+    if ((this.populatedViews['#guidePage'] == undefined) || this.modelController.galleriesListChanged){
 
-
-        }
     }
 
     return;
@@ -269,6 +283,12 @@ ViewAssembler.prototype.populateFirstPage = function (options){
     $('#calBtn').click(function(){
         changePageDelegate.changePage('#calendarPage',{});
     });
+
+    $('#guideBtn').click(function(){
+        changePageDelegate.changePage('#guidePage',{});
+    });
+
+
     return;
 };
 

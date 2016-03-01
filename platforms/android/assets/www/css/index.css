@@ -202,7 +202,7 @@ ul i.fa-mobile:before {
 
 .intrinsic-container {
 
-    overflow: scroll;
+    overflow: auto;
 }
 
 .intrinsic-container img{
@@ -211,12 +211,12 @@ ul i.fa-mobile:before {
 
 /* 16x9 Aspect Ratio */
 .intrinsic-container-16x9 {
-    height: calc(100vh - 192px);
+    max-height: calc(100vh - 192px);
 }
 
 /* 4x3 Aspect Ratio */
 .intrinsic-container-4x3 {
-    height: calc(100vh - 170px);
+    max-height: calc(100vh - 170px);
 }
 
 

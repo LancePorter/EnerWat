@@ -63,7 +63,6 @@ var ViewAssembler = function(delegatesList){
         resourceList.push({
             id : $(this).data('id'),
             title:  $(this).text(),
-            color:  $(this).data('eventColor')
 
         });
     });
@@ -106,14 +105,8 @@ ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
         case '#calendarPage':
         case '#firstPage':
         case '#aboutPage':
-            $('.mainHeader > h2').hide();
-            $('.rightHeaderButton').hide();
-            $('#backButton').hide().off('click');
-        case '#galleryInfoPage':
-            $('.mainHeader > h2').hide();
-            $('.rightHeaderButton').hide();
-            $('#backButton').hide().off('click');
         case '#sciCommitteePage':
+        case '#depGuidePage':
             $('.mainHeader > h2').hide();
             $('.rightHeaderButton').hide();
             $('#backButton').hide().off('click');
@@ -181,12 +174,6 @@ ViewAssembler.prototype.assembleMainHeader = function(viewId, options){
                 changePageDelegate.changePage('#execCommitteePage',{});
             });
             break;
-        case '#galleryInfoPage':
-            $('.mainHeader > h2').text('Gallery Info').fadeIn();
-            var changePageDelegate = this.changePageDelegate;
-            $('#backButton').fadeIn().click(function(){
-                changePageDelegate.changePage('#guidePage',{});
-            });
     }
     return;
 };

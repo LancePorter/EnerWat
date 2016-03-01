@@ -202,13 +202,13 @@ ViewAssembler.prototype.populateCalendarPage = function(options){
             height:'auto',
             eventLimit: false, // allow "more" link when too many events
             events: this.events,
-            defaultView: 'agendaWeek',
+            defaultView: 'agendaDay',
             resources: this.resources,
             resourceLabelText: $('#EN_place').text(),
             header: {
                 left: 'today next,prev',
                 center: '',
-                right: 'timelineDay,agendaWeek'
+                right: 'agendaDay,agendaWeek'
             },
             schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
             eventClick: function(calEvent, jsEvent, view) {alert('Event: ' + calEvent.description);}

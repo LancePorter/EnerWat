@@ -201,28 +201,25 @@ ul i.fa-mobile:before {
 }
 
 .intrinsic-container {
-    position: relative;
-    height: 0;
-    overflow: hidden;
+
+    overflow: scroll;
+}
+
+.intrinsic-container img{
+    width: 100%;
 }
 
 /* 16x9 Aspect Ratio */
 .intrinsic-container-16x9 {
-    padding-bottom: calc(100vh - 192px);
+    height: calc(100vh - 192px);
 }
 
 /* 4x3 Aspect Ratio */
 .intrinsic-container-4x3 {
-    padding-bottom: calc(100vh - 170px);
+    height: calc(100vh - 170px);
 }
 
-.intrinsic-container iframe {
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+
 
 .mapContainer{
     height: 100%;

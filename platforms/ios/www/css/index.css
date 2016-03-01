@@ -1,0 +1,166 @@
+
+@font-face {
+
+    font-family: 'yekan';
+
+    src: url('../fonts/BYekan.eot?#') format('eot'),
+
+    url('../fonts/BYekan.woff') format('woff'),
+
+    url('../fonts/BYekan.ttf') format('truetype');
+
+}
+
+html {
+    background: url('../img/2.png') no-repeat center bottom, url('../img/1.jpg') no-repeat center center fixed; 
+    background-size: contain, cover;
+    height: 100%;
+    font-family: yekan;
+
+}
+
+body{
+    background: transparent;
+}
+
+.mainContainer {
+    padding-left: 0;
+    padding-right: 0;
+    /*background-color: rgba(221, 235, 245, 0.2);*/
+
+}
+
+
+.mainHeader {
+    border-radius: 5px;
+    height: 56px;
+    position: fixed;
+    width: calc(100% - 10px);
+    top: 0;
+    left: 0;
+    margin: 5px;
+    padding: 13px 5px 13px 5px;
+    z-index: 99;
+    background-color: rgba(220, 235, 245, 0.7);
+}
+
+.mainHeader h2{
+    line-height: 30px;
+    margin: 0px 60px 0px 60px;
+    padding: 0;
+    text-align: center;
+    font-family: yekan;
+}
+
+.headerButton{
+    background-color: rgba(244, 244, 244, 1);
+    padding: 3px 10px 3px 10px !important;
+
+}
+
+.backButton{
+    float: left;
+    margin-top: -3px;
+}
+
+.rightHeaderButton{
+    float: right;
+    margin-top: -33px;
+}
+
+.mainFooter{
+    border-radius: 0  !important;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    padding: 5px;
+    background-color: rgba(220, 235, 245, 0.7);
+    z-index: 99;
+
+}
+
+.mainContent{
+    border-radius: 5px;
+    padding: 15px;
+    margin: 75px 12px 65px 12px;
+    width : calc(100% - 24px);
+    background-color: rgba(230, 240, 255, 0.8);
+}
+
+.galleriesListIcon{
+    margin-right: 15px;
+}
+
+#galleryIcon{
+    float: left;
+    margin-right: 15px;
+}
+#galleryMainInfo{
+    overflow: auto;
+}
+
+.tab{
+    padding: 0;
+}
+
+.selectedTab{
+    background-color: #e6e6e6;
+}
+
+.fullHeight{
+    height: 100%;
+}
+
+.tabBrowser{
+    font-size: 180%;
+}
+
+.branchesPanel{
+    padding: 5px;
+    background-color: rgba(244, 244, 244, 0.35);
+}
+
+.branchesPanel h4 {
+    margin-left: 15px;
+}
+
+.branchInfo .panel-body{
+    font-size: 120%;
+}
+
+ul i.fa-mobile:before {
+    font-size: 130%
+}
+
+#firstPageMenu a{
+    font-size: 125%;
+    margin-bottom: 3px;
+    font-family: yekan;
+    text-align: right;
+}
+
+#firstPageMenu span{
+    margin: 5px;
+    margin-left: 15px;
+    font-size: 115%;
+}
+#aboutPage ol{
+    direction: rtl;
+    font-family: yekan;
+    font-size: 115%;
+}
+#aboutPage p{
+    margin-top: 12px;
+    font-family: yekan;
+    text-align-last: right;
+    text-align: justify;
+    direction: rtl;
+    text-indent: 18px;
+}
+
+#aboutPage p span{
+    font-size: 120%;
+}

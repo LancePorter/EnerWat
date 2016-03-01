@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="msapplication-tap-highlight" content="no"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/fullcalendar.css">
+        <link rel="stylesheet" href="css/scheduler.css">
+        <!--link rel="stylesheet" href="css/jquery.mobile-1.4.5.css"-->
+
+        <!-- js -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-2.1.4.js"></script>
+        <!--script src="js/jquery.mobile-1.4.5.js"></script-->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/moment-with-locales.js"></script>
+        <script src="js/fullcalendar.min.js"></script>
+        <script src="js/scheduler.js"></script>
+        <script src="js/modelController.js"></script>
+        <script src="js/viewAssembler.js"></script>
+        <script src="js/viewManager.js"></script>
+        <script src="js/app.js"></script>
+        <title>Hello World</title>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+
+    <div class="container-fluid mainContainer">
+        <div class="mainHeader">
+            <a type="button" id="backButton" class="btn btn-default headerButton backButton fa fa-2x fa-arrow-circle-left"></a>
+            <h2>Sampplication</h2>
+            <a type="button" class="btn btn-default headerButton rightHeaderButton fa fa-2x fa-arrow-circle-left"></a>
+
+        </div>
+        <div class="mainContent">
+            <div class="SPage" id="calendarPage">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="SPage" id="galleriesPage">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul id="galleriesList" class="list-group">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="SPage" id="firstPage">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul id="firstPageMenu" class="list-group">
+                            <a id="aboutBtn" class="list-group-item">درباره&zwnj;ی رویداد<span class="fa fa-info-circle"></span></a>
+                            <a id="calBtn" class="list-group-item">برنامه&zwnj;ی مقالات<span class="fa fa-calendar"></span></a>
+                            <a class="list-group-item">نقشه و راهنمای دانشگاه<span class="fa fa-map-signs"></span></a>
+                            <a class="list-group-item">کمک به رویداد<span class="fa fa-credit-card"></span></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="SPage" id="galleryInfoPage">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="jumbotron" id="galleryMainInfo">
+                            <img id="galleryIcon" src="img/logo.png" height="120px"/>
+                            <h4 id="galleryTitle"> Gallery Title </h4>
+                            <h5 class="fa fa-globe"> : Website</h5><br/>
+                            <h5 class="fa fa-at"> E-Mail</h5>
+                        </div>
+
+
+
+                        <div class="panel panel-default branchesPanel">
+                            <h4>Branches:</h4>
+                            <div class="panel-group" id="branchesAccordion">
+                                <div class="branchInfo panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#branchesAccordion" href="#collapse1">Collapsible Group 1</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <p>Manager: <b>Stratosphere</b></p>
+                                            <ul class="fa-ul">
+                                                <li><i class="fa-li fa  fa-map"></i>List icons</li>
+                                                <li><i class="fa-li fa  fa-phone"></i>List icons</li>
+                                                <li><i class="fa-li fa"></i>List icons</li>
+                                                <li><i class="fa-li fa  fa-mobile"></i>List icons</li>
+                                                <li><i class="fa-li fa fa-fax"></i>List icons</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#branchesAccordion" href="#collapse2">Collapsible Group 2</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#branchesAccordion" href="#collapse3">Collapsible Group 3</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="SPage" id="sciCommitteePage">
+
+                <dl class="committeeList">
+                    <dt>آقای دکتر علی اصغر اعلم الهدی (رییس کمیته علمی)</dt>
+                    <dd>ریاست انستیتو آب و انرژی شریف</dd>
+
+                    <dt>آقای دکتر احمد ابریشم چی</dt>
+                    <dd> ریاست کرسی مدیریت آب و محیط زیست یونسکو</dd>
+
+                    <dt>آقای دکتر مهدی احسان</dt>
+                    <dd>دانشکده مهندسی برق دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر رضا اردکانیان</dt>
+                    <dd>مدیر برنامه دهه جهانی آب سازمان ملل متحد، مدیر انستیتو UNU-FLORES</dd>
+
+                    <dt>آقای دکتر مسعود تجریشی</dt>
+                    <dd>معاون پژوهشی و فناوری دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر ایوب ترکیان ولاشانی                                     </dt>
+                    <dd>انستیتو آب و انرژی شریف</dd>
+
+                    <dt>خانم دکتر زهرا جواهریان                                              </dt>
+                    <dd> دفتر توسعه پایدار و اقتصاد محیط زیست سازمان حفاظت محیط زیست</dd>
+
+                    <dt>آقای دکتر پیمان دانش کار آراسته                                    </dt>
+                    <dd>  دانشگاه بینالمللی امام خمینی قزوین</dd>
+
+                    <dt>آقای دکتر حسین دهقانی سانیج                                      </dt>
+                    <dd>  موسسه تحقیقات فنی و مهندسی کشاورزی</dd>
+
+                    <dt>آقای دکتر نسترن رحیمی                                                </dt>
+                    <dd> مشاور معاونت برنامه ریزی و امور اقتصادی وزارت نیرو</dd>
+
+                    <dt>آقای دکتر یدالله سبوحی                                                </dt>
+                    <dd> ریاست پژوهشکده علوم و فناوری انرژی شریف</dd>
+
+                    <dt>آقای دکتر داود غرویان                                                   </dt>
+                    <dd>ریاست مرکز توسعه فناوری شبکه هوشمند برق، آب و انرژی پژوهشگاه نیرو</dd>
+
+                    <dt>آقای دکتر مهدی فردمنش                                               </dt>
+                    <dd>دانشکده مهندسی برق دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر علیرضا فرهادی                                             </dt>
+                    <dd>  دانشکده مهندسی برق دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر هدایت فهمی                                                 </dt>
+                    <dd>معاون مدیرکل دفتر برنامه ریزی کلان آب و آبفا</dd>
+
+                    <dt>آقای دکتر احمد علی کیخا                                             </dt>
+                    <dd>دانشکده کشاورزی دانشگاه زابل</dd>
+
+                    <dt>آقای دکتر عباس ملکی                                                  </dt>
+                    <dd>  دانشکده مهندسی انرژی دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر رضا مکنون                                                   </dt>
+                    <dd>دفتر توسعه پایدار و اقتصاد محیط زیست سازمان حفاظت محیط زیست</dd>
+
+                    <dt>آقای دکتر امین نوبختی                                                 </dt>
+                    <dd>دانشکده مهندسی برق دانشگاه صنعتی شریف</dd>
+
+                    <dt>آقای دکتر سیدجمال الدین هاشمیان                                </dt>
+                    <dd>انستیتو آب و انرژی شریف</dd>
+
+                    <dt>آقای دکتر فرهاد یکه یزدان دوست                                   </dt>
+                    <dd>دانشکده مهندسی عمران دانشگاه صنعتی خواجه نصیرالدین طوسی</dd>
+                </dl>
+            </div>
+            <div class="SPage" id="execCommitteePage">
+                <dl class="committeeList">
+                    <dt>آقای دکتر امین نوبختی</dt>
+                    <dd>                       ریاست رویداد</dd>
+
+                    <dt>آقای محمد رضا دیوسالار</dt>
+                    <dd>                   دبیر کل رویداد</dd>
+
+                    <dt>خانم آفاق مهری</dt>
+                    <dd>                                معاون راهبردی رویداد</dd>
+
+                    <dt>آقای مرتضی توکلی طبا </dt>
+                    <dd>                      معاونت اجرایی رویداد</dd>
+
+                    <dt>آقای علیرضا اعظم پور   </dt>
+                    <dd>                     معاونت اجرایی رویداد</dd>
+
+                </dl>
+                <div class="committeeDiv">
+                    کمیته علمی:
+                    <dl class="committeeList">
+                        <dt>آقای امیرحسین صبا                           </dt>
+                        <dd>                          دبیر کمیته علمی </dd>
+
+                        <dt>خانم روژان ربانی  </dt>
+                        <dd>عضو کمیته علمی </dd>
+
+                        <dt>خانم آمیتیس شیدانی</dt>
+                        <dd>عضو کمیته علمی </dd>
+
+                        <dt>خانم پروین ملک زاده</dt>
+                        <dd>عضو کمیته علمی </dd>
+
+                        <dt>خانم الهه ودادی </dt>
+                        <dd>عضو کمیته علمی </dd>
+
+                        <dt>آقای آرش یزدانی</dt>
+                        <dd>عضو کمیته علمی </dd>
+
+
+                    </dl>
+                </div>
+                <div class="committeeDiv">
+                    کمیته صنعت:
+                    <dl class="committeeList">
+                        <dt>آقای امیرمحمد میران زاده                  </dt>
+                        <dd>دبیر کمیته صنعت</dd>
+
+                        <dt>خانم سنا امانی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>خانم مینا حبیبی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>آقای شروین حکیمی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>خانم عاطفه سهرابی زاده </dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>آقای شهریار شهرام</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>آقای کسری کیانی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>آقای فرزام گیلانی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                        <dt>آقای علیرضا محمدشاهی</dt>
+                        <dd>عضو کمیته صنعت</dd>
+
+                    </dl>
+                </div>
+                <div class="committeeDiv">
+                    کمیته مسابقه:
+                    <dl class="committeeList">
+                        <dt>خانم زینب علیپور</dt>
+                        <dd>دبیر کمیته مسابقه</dd>
+
+                        <dt>آقای مهدی امیری</dt>
+                        <dd>عضو کمیته مسابقه</dd>
+
+                        <dt>آقای سید کیارش غیاثی</dt>
+                        <dd>عضو کمیته مسابقه</dd>
+
+                        <dt>آقای هادی گیوه چیان</dt>
+                        <dd>عضو کمیته مسابقه</dd>
+
+                    </dl>
+                </div>
+                <div class="committeeDiv">
+                    کمیته آموزش:
+                    <dl class="committeeList">
+                        <dt>آقای عرفان عاصی</dt>
+                        <dd>دبیر کمیته آموزش</dd>
+
+                        <dt>آقای محسن اصدق پور</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای کیهان بایگان</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای محمد رضا بنایی</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای پیمان شهیدی</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای محمدعلی منصوریان</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای محمد نادری تبار</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای سید شایان ناظمی</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                        <dt>آقای محمد نورزاده روشن</dt>
+                        <dd>عضو کمیته آموزش</dd>
+
+                    </dl>
+                </div>
+                <div class="committeeDiv">
+                    کمیته روابط عمومی و تبلیغات:
+                    <dl class="committeeList">
+                        <dt>آقای محمدرضا محبوبی اردکانی</dt>
+                        <dd>دبیر کمیته روابط عمومی و تبلیغات</dd>
+
+                        <dt>آقای شهاب الدین سعیدا </dt>
+                        <dd>عضو کمیته روابط عمومی و تبلیغات</dd>
+
+                        <dt>خانم درسا طالبی</dt>
+                        <dd>عضو کمیته روابط عمومی و تبلیغات</dd>
+
+                        <dt>خانم کیانا علیزاده</dt>
+                        <dd>عضو کمیته روابط عمومی و تبلیغات</dd>
+
+                        <dt>آقای شروین منظوری شلمانی</dt>
+                        <dd>عضو کمیته روابط عمومی و تبلیغات</dd>
+
+                        <dt>آقای مسعود آل علی</dt>
+                        <dd>عضو کمیته روابط عمومی و تبلیغات</dd>
+
+                    </dl>
+
+                </div>
+                <p>
+                    و با تشکر از تمام عزیزانی که ما را یاری نمودند:
+                </p>
+                <p>
+                    خانم نفیسه زین الدین، خانم خیری پور، آقای مهران بهمنی، آقای بهنام نوذری، آقای امیرمسعود باقری، آقای حسین نجفی، خانم افسانه شاهمیری، آقای مهندس دهبیدی پور، خانم مقدم، آقای ناصر شفق، آقای دکتر مهدی وکیلیان، آقای دکتر رضا سروری، آقای دکتر مهرداد بروشکی، آقای دکتر امیر صفدریان، آقای دکتر تقی عبادی، آقای دکتر مجتبی شوریان، آقای دکتر رامتین معینی، آقای سعید فتوحی و خانم کرمی و ...                </p>
+            </div>
+            <div class="SPage" id="aboutPage">
+
+                <p>
+                    دانشگاه صنعتی شریف به عنوان یکی ازدانشگاه های برجسته کشور در عرصه های گوناگون علمی نقش مهمی در پیشرفت و جهت دهی علمی و صنعتی کشور ایفا می کند.
+                    از اینرو دانشکده مهندسی برق به عنوان یکی از فعال ترین دانشکده های این دانشگاه بر آن شده است که اینبار با رویکردی نوین توجه خود را بیش از پیش به حل بحران آب و انرژی کشور معطوف کند.
+                    بررسی هایی که در سطح ملی و بین المللی در این زمینه صورت گرفته نشان می دهد که مهندسی برق با توجه به نقش برجسته ای که در تولید، توزیع و مصرف انرژی و ساخت تجهیزات مربوط به استفاده صتعتی، تصفیه، بازیافت، شیرین سازی و صرفه جویی صتعتی و غیر صنعتی آب ایفا می کند، از اساسی ترین پیوند دهنده های آب و انرژی به شمار می رود.
+                    از اینرو تلاش می شود که اساتید این دانشکده به همراه کادر اجرایی با همکاری با اساتید دیگر دانشکده های دانشگاه صتعتی شریف نظیر دانشکده عمران و انرژی و انستیتو آب و انرژی و اساتید سایر دانشگاه های کشور رسالت این دانشکده در حل بحران آب و انرژی را به بهترین شکل به انجام برسانند.
+                </p>
+                <p>
+                    از این رو برآن شدیم تا رویداد پیوند آب و انرژی شریف (EnerWat 2016) را با اهداف زیر برگزار نماییم:
+                </p>
+                <p>
+                    <span>
+•	اهمیت یافتن مسائل مربوط به آب و انرژی برای دانشجویان و پژوهشگران و صنعتگران مهندسی:
+                    </span>
+                    ایران، کشوری در حال توسعه است و بخشی از این توسعه مربوط به دانش مهندسیست. یکی از اهداف رویداد این است که مسائل محیط زیستی بلاخص مسائل مربوط به آب و انرژی در این توسعه در نظر گرفته شوند و این توسعه مهندسی و فناوری کشور، توسعه های پایدار و همگام با وضعیت آب و انرژی کشور و متناسب با محیط زیست باشد. این رویداد میتواند این موضوع را به صنعتگران و دانشجویان که بخشی از صنعتگران آینده اند، انتقال دهد.
+                </p>
+                <p>
+                    <span>
+•	انتقال مطالعات موردی پژوهشگران به صنعتگران و سیاستگذاران:
+                    </span>
+                    انتظار میرود در این رویداد، به کمک ارائه مقالات، سخنرانیهای کلیدی، کارگاهها و میزگردها، مسابقه و مطالعات و تحقیقات انجام شده و در حال انجام در این حوزه به صنعتگران و سیاستگذاران و مدیران منتقل شود تا کمکی به بهبود وضعیت آب و انرژی کشور شود.
+                </p>
+                <p>
+                    <span>
+•	تجمیع پژوهشگران و صنعتگران حوزههای آب و انرژی و توسعه تحقیق و پژوهش در زمینه های مشترک این دو حوزه:
+                    </span>
+                    این رویداد میتواند به عنوان فرصتی برای پژوهش در حوزه های آب و انرژی تلقی شود تا تحقیق و پژوهش در ارتباطات این دو حوزه و پیوستگیهای آن را به دنبال داشته باشد. کنار هم جمع شدن پژوهشگران این حوزه، میتواند بستری را برای بهبود در بحرانهای مربوط به آب و انرژی و ارائه راهکارهای نوین را به وجود آورد.
+                </p>
+                <p>
+                    <span>
+•	فرهنگ سازی در راستای صرفه جویی و مصرف بهینه آب و انرژی در سطح مردمی:
+                    </span>
+                    آگاهی بخشی به مردم از معضلات مربوط به بحران آب حال حاضر کشور و تاثیر آن بر دیگر مسائل مانند کاهش انرژی و مشکلات دیگر، آگاهی بخشی در مورد ارتباط آب و انرژی مانند نحوه تولید آب و انرژی و روش های بدست آوردن هریک از دیگری، آگاه ساختن مردم و مسئولین در مورد مسائل و طرح هایی که ممکن است برای سطح تولید و مصرف آب و انرژی در کشور مفید باشند اما به علت بی توجهی یا دلایل دیگر به آنها اهمیتی داده نشده است.
+                </p>
+                <p>
+                در راستای نیل به اهداف تعیین شده ی رویداد و اثربخشی دانشکده برق در کمک به حل این بحران چهارچوب کار رویداد در قالب محور هایی به شرح زیر مشخص شده است:
+                </p>
+                <ol>
+                    <li>مدیریت هوشمند تاسیسات آب و انرژی </li>
+                    <li>تولید همزمان آب و نیرو</li>
+                    <li>مصرف هوشمند آب در کشاورزی</li>
+                    <li>سنجش، ابزار دقیق و اتوماسیون</li>
+                    <li>ردپای انرژی در استحصال، تصفیه و توزیع آب</li>
+                    <li>ردپای آب در تولید و تبدیل انرژی</li>
+                    <li>مدیریت سبز عرضه و تقاضا</li>
+                    <li>جمع آوری، پایش و پردازش اطلاعات</li>
+
+                </ol>
+            </div>
+        </div>
+        <div class="jumbotron mainFooter">
+            <div class="tabBrowser btn-group btn-group-justified fullHeight" id="aboutFooter">
+                <a href="#" class="tab btn btn-default footerTabBtn" id="execCommitteeBtn">کمیته اجرایی</a>
+                <a href="#" class="tab btn btn-default footerTabBtn" id="sciCommitteeBtn">کمیته علمی</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: none" id="toPersian">
+
+        <p id="EN_aboutUs">درباره&zwnj;ی ما</p>
+        <p id="EN_welcome">خوش آمدید</p>
+        <p id="EN_aboutEvent">درباره&zwnj;ی رویداد</p>
+        <p id="EN_articlesSchedule">برنامه&zwnj;ی مقالات</p>
+        <p id="EN_mapAndGuideToUniversity">نقشه و راهنمای دانشگاه</p>
+        <p id="EN_helpEvent">کمک به رویداد</p>
+        <p id="EN_place">مکان</p>
+        <!--
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+
+
+
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        <p id="EN_"></p>
+        -->
+    </div>
+    <div id="eventsDiv" hidden>
+        <div data-id='0' data-title='مراسم افتتاحیه' data-start='2016-03-01T08:15:00' data-end='2016-03-01T10:00:00'  data-p='1' data-color='purple'>
+            سخنرانی ریاست کمیته علمی رویداد، دکتر اعلم الهدی ] 8:15-8:25[
+            سخنرانی ریاست دانشگاه صنعتی شریف، دکتر فتوحی ]8:25-8:40[
+            سخنرانی وزیر نیرو، جناب آقای چیت چیان ]9:05-9:25[
+            سخنرانی آقای Richard Taylor ]9:25-9:45[
+            سخنرانی آقای Herve Le Treut ]9:45-10[
+        </div>
+
+        <div data-id='1' data-title='پذیرایی' data-start='2016-01-07T02:00:00' data-end='2016-01-07T02:30:00' data-p='2' data-color='green'>
+        </div>
+
+        <p data-id='1' data-color='cyan'>
+            سالن کهربا
+        </p>
+
+        <p data-id='2' data-color='red'>
+            دانشکده برق
+        </p>
+
+        <p data-id='3' data-color='green'>
+            سلف ویژه
+        </p>
+
+        <p data-id='4' data-color='pink'>
+            سالن آمفی تئاتر مرکزی
+        </p>
+
+        <div data-id='2' data-title='سخنرانی' data-start='2016-03-01T10:20:00' data-end='2016-03-01T11:00:00'  data-p='1' data-color='blue'>
+            10:20-11 [ساخنرانی آقای جواد امین منصوررویکرد جامعه بین المللی به انرژی، روندها و چالشها]
+            سالن کهربا
+        </div>
+        <div data-id='3' data-title='سخنرانی' data-start='2016-03-01T11:00:00' data-end='2016-03-01T12:00:00'  data-p='1' data-color='blue'>
+            11-12 [سخنرانی کلیدی، آقای دکتر مسعود تجریشی پیوند آب و انرژی در دریاچه ارومیه]
+            سالن کهربا
+        </div>
+        <div data-id='4' data-title='ناهار و نماز' data-start='2016-03-01T12:30:00' data-end='2016-03-01T13:30:00'  data-p='3' data-color='brown'>
+            12:30-13:30  ناهار و نماز
+        </div>
+        <div data-id='5' data-title='میزگرد' data-start='2016-03-01T13:30:00' data-end='2016-03-01T15:40:00'  data-p='1' data-color='orange'>
+            13:30-15:40 [میزگرد تخصصی موسسه تحقیقات فنی و مهندسی کشاورزی]
+            [آبیاری هوشمند)موسسه تحقیقات کشاورزی ایران(]
+            [هوشمندسازی سامانههای آبیاری و مدیریت آبیاری]
+            [کاربرد تکنولوژیهای سنجش از راه دور در مدیریت آبیاری]
+            [سنسورهای رطوبتی، حرارتی و شوری]
+
+            [دکتر حسین دهقانی]
+            [دکتر مهدی اکبری]
+            [مهندس وحید صدقی]
+
+            سالن کهربا
+        </div>
+        <div data-id='6' data-title='پذیرایی' data-start='2016-03-01T15:40:00' data-end='2016-03-01T16:00:00'  data-p='2' data-color='brown'>
+            15:40-16  [تنفس – پذیرایی]
+            دانشکده برق
+        </div>
+        <div data-id='7' data-title='میزگرد' data-start='2016-03-01T16:00:00' data-end='2016-03-01T18:00:00'  data-p='1' data-color='orange'>
+            16-18 [میزگرد تخصصی موسسه تحقیقات فنی و مهندسی کشاورزی]
+            [گلخانه، آب و انرژی )موسسه تحقیقات کشاورزی ایران(]
+
+            [چالش های مصرف انرژی در گلخانه ها]
+            [گلخانه های خورشیدی]
+            [استفاده از آب شیرین کن ها در گلخانه ها]
+
+            [دکتر داود مومنی]
+            [ دکتر قاسم زارعی]
+            [ دکتر مرتضی خان احمدی]
+            سالن کهربا
+        </div>
+
+        چهارشنبه 12 اسفند
+
+        <div data-id='8' data-title='سخنرانی' data-start='2016-03-02T08:00:00' data-end='2016-03-02T09:00:00'  data-p='1' data-color='blue'>
+            8-9 [سخنرانی کلیدی، دکتر کاوه مدنی System of Systems Approach to Energy Sustainability]
+            سالن کهربا
+        </div>
+        <div data-id='9' data-title='سخنرانی' data-start='2016-03-02T09:00:00' data-end='2016-03-02T10:00:00'  data-p='1' data-color='blue'>
+            9-10 [ سخنرانی کلیدی، پروفسور Herve Le Treut]
+            سالن کهربا
+        </div>
+        <div data-id='10' data-title='پذیرایی' data-start='2016-03-02T10:00:00' data-end='2016-03-02T10:30:00'  data-p='2' data-color='brown'>
+            10-10:30 [ تنفس – پذیرایی]
+            دانشکده برق
+        </div>
+        <div data-id='11' data-title='سخنرانی' data-start='2016-03-02T11:00:00' data-end='2016-03-02T12:00:00'  data-p='1' data-color='blue'>
+            11-12 [سخنرانی کلیدی، آقای Richard Taylor Hydropower's Role in Sustainable Water and Energy Systems]
+            سالن کهربا
+        </div>
+        <div data-id='12' data-title='ناهار و نماز' data-start='2016-03-02T12:30:00' data-end='2016-03-02T13:30:00'  data-p='3' data-color='blue'>
+            12:30-13:30 [ ناهار و نماز]
+        </div>
+        <div data-id='13' data-title='میزگرد' data-start='2016-03-02T13:30:00' data-end='2016-03-02T15:40:00'  data-p='1' data-color='orange'>
+            13:30-15:40 [میزگرد تخصصی پیوند آب و انرژی در حوزه نیروگاههای برق آبی کشور]
+            [پیوند آب و انرژی در حوضه  نیروگاه های برق آبی کشور]
+
+            [دستاوردها، اهداف و چالش ها جلسه 1]
+
+            [مهندس حاج رسولیها]
+            [مهندس رضا زاده]
+            [مهندس شمسایی]
+
+            سالن کهربا
+        </div>
+        <div data-id='14' data-title='مقالات' data-start='2016-03-02T13:30:00' data-end='2016-03-02T15:40:00'  data-p='2' data-color='green'>
+            13:30-15:40 [ارائه مقاالت پوستر]
+            دانشکده برق
+        </div>
+        <div data-id='15' data-title='پذیرایی' data-start='2016-03-02T15:40:00' data-end='2016-03-02T16:00:00'  data-p='2' data-color='brown'>
+            15:40-16 [تنفس - پذیرایی]
+            دانشکده برق
+        </div>
+        <div data-id='16' data-title='میزگرد' data-start='2016-03-02T16:00:00' data-end='2016-03-02T18:00:00'  data-p='1' data-color='orange'>
+            16-18 [میزگرد تخصصی پیوند آب و انرژی در حوزه نیروگاههای برق آبی کشور]
+            [پیوند آب و انرژی در حوضه  نیروگاه های برق آبی کشور]
+
+            [دستاوردها، اهداف و چالش ها جلسه 1]
+
+            [مهندس استیری]
+            [مهندس بزرگ زاده]
+            [مهندس افشاری]
+            [مهندس اطاعتی]
+
+            سالن کهربا
+        </div>
+        <div data-id='17' data-title='مقاالت' data-start='2016-03-02T16:00:00' data-end='2016-03-02T18:00:00'  data-p='2' data-color='green'>
+            16-18 [ارائه مقالات پوستر]
+            دانشکده برق
+        </div>
+
+
+
+
+        پنجشنبه 13 اسفند
+
+        <div data-id='18' data-title='نشست' data-start='2016-03-03T08:00:00' data-end='2016-03-03T10:00:00'  data-p='4' data-color='orange'>
+            8-10 [نشست هم اندیشی اقتصاد آب و انرژی]
+            سالن آمفی تئاتر مرکزی
+        </div>
+        <div data-id='19' data-title='پذیرایی' data-start='2016-03-03T10:00:00' data-end='2016-03-03T10:20:00'  data-p='2' data-color='brown'>
+            10-10:20 [تنفس – پذیرایی]
+            دانشکده برق
+        </div>
+        <div data-id='20' data-title='میزگرد' data-start='2016-03-03T10:20:00' data-end='2016-03-03T12:00:00'  data-p='1' data-color='orange'>
+            10:20-12 [میزگرد اقتصاد آب و انرژی]
+            [آب، انرژی و اقتصاد]
+
+            [ اقتصاد آب و انرژی]
+
+            [مهندس دائمی]
+            [دکتر ملکی]
+
+            سالن کهربا
+        </div>
+        <div data-id='21' data-title='ناهار و نماز' data-start='2016-03-03T12:00:00' data-end='2016-03-03T13:30:00'  data-p='3' data-color='brown'>
+            12-13:30 [ ناهار و نماز]
+        </div>
+        <div data-id='22' data-title='مقالات' data-start='2016-03-03T13:30:00' data-end='2016-03-03T15:40:00'  data-p='2' data-color='green'>
+            13:30-15:40 [جلسه موازی ارائه مقاالت]
+            دانشکده برق کلاس برق 5
+        </div>
+        <div data-id='23' data-title='مقالات' data-start='2016-03-03T13:30:00' data-end='2016-03-03T15:40:00'  data-p='2' data-color='green'>
+            13:30-15:40 [جلسه موازی ارائه مقاالت]
+            دانشکده برق کلاس برق 4
+        </div>
+        <div data-id='24' data-title='اختتامیه' data-start='2016-03-03T17:30:00' data-end='2016-03-03T19:00:00'  data-p='1' data-color='purple'>
+            17:30-19 [اختتامیه]
+            سالن کهربا
+        </div>
+
+    </div>
+
+    </body>
+</html>
